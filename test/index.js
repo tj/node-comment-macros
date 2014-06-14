@@ -37,9 +37,9 @@ describe('.use(fn)', function(){
 
     m.use(function(label){
       return this.script(function(){
-        console.log("$0");
-        console.timeStart("$0")
-        stats.incr("$0")
+        console.log($0);
+        console.timeStart($0)
+        stats.incr($0)
       }, label);
     });
 

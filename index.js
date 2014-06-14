@@ -49,7 +49,7 @@ Macros.prototype.script = function(fn){
   var str = fn.replace(/^ */gm, '');
 
   str = str.replace(/\$([0-9])/g, function(_, n){
-    return args[n];
+    return JSON.stringify(args[n]);
   });
 
   return str;
