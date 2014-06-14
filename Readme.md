@@ -83,6 +83,36 @@ db.save(user, function(err){
 });
 ```
 
+## Scripting
+
+  A `this.script(fn)` method is also available to aid in scripting. Suppose for example you want to replace the following macro comment with multiple lines of javascript, it would be pretty annoying with strings:
+
+```js
+//: convert to csv
+data.pipe(csv)
+```
+
+  So the helper may be used to generate a string of javascript. Arguments passed may be referenced with `$[0-9]` and are converted to JSON. Here's an example passing in the `label` string. It cannot be used via closure because the function passed to `this.script` is effectively a template, think of it as a string, not as a closure.
+
+```js
+m.use(function(label){
+  return this.script(function(){
+    console.log($0);
+    console.timeStart($0)
+    stats.incr($0)
+  }, label);
+});
+```
+
+  Yielding:
+
+```js
+console.log("convert to csv");
+console.timeStart("convert to csv")
+stats.incr("convert to csv")
+data.pipe(csv)
+```
+
 # License
 
   MIT
