@@ -20,7 +20,7 @@ Macros.prototype.script = function(fn){
 Macros.prototype.visit = function(str){
   var res = [];
   for (var i = 0; i < this.plugins.length; i++) {
-    var ret = this.plugins[i](str);
+    var ret = this.plugins[i].call(this, str);
     if (null == ret) continue;
     res.push(ret);
   }
