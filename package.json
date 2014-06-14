@@ -1,5 +1,5 @@
 {
-  "name": "node-comment-macros",
+  "name": "comment-macros",
   "version": "0.0.1",
   "repository": "visionmedia/node-comment-macros",
   "description": "Turn comments into macros for logging, tracing, metrics, etc",
