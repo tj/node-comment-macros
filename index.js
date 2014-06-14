@@ -1,5 +1,18 @@
 
+/**
+ * Expose `Macros`.
+ */
+
 module.exports = Macros;
+
+/**
+ * Initialize `Macros`
+ *
+ * - `prefix` defaulting to ":"
+ *
+ * @param {Object} [opts]
+ * @api public
+ */
 
 function Macros(opts) {
   opts = opts || {};
@@ -7,9 +20,26 @@ function Macros(opts) {
   this.plugins = [];
 }
 
+/**
+ * Add a plugin `fn`.
+ *
+ * @param {Function} fn
+ * @api public
+ */
+
 Macros.prototype.use = function(fn){
   this.plugins.push(fn);
 };
+
+/**
+ * Convert `fn` to a string of javascript and
+ * replace references to `$[0-9]` with the
+ * arguments passed.
+ *
+ * @param {Function} fn
+ * @param {Mixed} ...
+ * @api public
+ */
 
 Macros.prototype.script = function(fn){
   var re = /^function *\( *\) *\{\s*|\s*\}$/g;
@@ -25,6 +55,14 @@ Macros.prototype.script = function(fn){
   return str;
 };
 
+/**
+ * Apply plugin functions to `str`.
+ *
+ * @param {String} str
+ * @return {STring}
+ * @api private
+ */
+
 Macros.prototype.visit = function(str){
   var res = [];
   for (var i = 0; i < this.plugins.length; i++) {
@@ -34,6 +72,14 @@ Macros.prototype.visit = function(str){
   }
   return res;
 };
+
+/**
+ * Process `js` string with plugins.
+ *
+ * @param {String} js
+ * @return {String}
+ * @api public
+ */
 
 Macros.prototype.process = function(js){
   var re = /^( *\/\/.*)/gm;
