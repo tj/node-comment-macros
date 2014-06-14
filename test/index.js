@@ -27,7 +27,24 @@ describe('.use(fn)', function(){
     });
 
     var s = m.process(js);
-    s.should.equal(fixture('test/fixtures/simple.out.js'))
+    s.should.equal(fixture('test/fixtures/simple.out.js'));
+  })
+
+  it('should have access to this.script()', function(){
+    var js = fixture('test/fixtures/script.js');
+
+    var m = new Macros;
+
+    m.use(function(label){
+      return this.script(function(){
+        console.log("$0");
+        console.timeStart("$0")
+        stats.incr("$0")
+      }, label);
+    });
+
+    var s = m.process(js);
+    s.should.equal(fixture('test/fixtures/script.out.js'))
   })
 })
 

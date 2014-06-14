@@ -13,8 +13,16 @@ Macros.prototype.use = function(fn){
 
 Macros.prototype.script = function(fn){
   var re = /^function *\( *\) *\{\s*|\s*\}$/g;
+  var args = [].slice.call(arguments, 1);
+
   fn = fn.toString().replace(re, '');
-  return fn.replace(/^ */gm, '');
+  var str = fn.replace(/^ */gm, '');
+
+  str = str.replace(/\$([0-9])/g, function(_, n){
+    return args[n];
+  });
+
+  return str;
 };
 
 Macros.prototype.visit = function(str){
