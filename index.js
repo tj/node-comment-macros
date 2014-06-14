@@ -11,6 +11,12 @@ Macros.prototype.use = function(fn){
   this.plugins.push(fn);
 };
 
+Macros.prototype.script = function(fn){
+  var re = /^function *\( *\) *\{\s*|\s*\}$/g;
+  fn = fn.toString().replace(re, '');
+  return fn.replace(/^ */gm, '');
+};
+
 Macros.prototype.visit = function(str){
   var res = [];
   for (var i = 0; i < this.plugins.length; i++) {

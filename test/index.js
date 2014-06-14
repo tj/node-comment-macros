@@ -30,3 +30,16 @@ describe('.use(fn)', function(){
     s.should.equal(fixture('test/fixtures/simple.out.js'))
   })
 })
+
+describe('.script(fn)', function(){
+  it('should strip the function for easy serialization of js', function(){
+    var m = new Macros;
+
+    var s = m.script(function(){
+      console.log(a + b)
+      console.log(b + c)
+    });
+
+    s.should.equal('console.log(a + b)\nconsole.log(b + c)');
+  })
+})
