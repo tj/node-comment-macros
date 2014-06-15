@@ -89,7 +89,7 @@ db.save(user, function(err){
 
 ```js
 //: convert to csv
-data.pipe(csv)
+data.pipe(csv).pipe(process.stdout);
 ```
 
   So the helper may be used to generate a string of javascript. Arguments passed may be referenced with `$[0-9]` and are converted to JSON. Here's an example passing in the `label` string. It cannot be used via closure because the function passed to `this.script` is effectively a template, think of it as a string, not as a closure.
@@ -110,7 +110,7 @@ m.use(function(label){
 console.log("convert to csv");
 console.timeStart("convert to csv")
 stats.incr("convert to csv")
-data.pipe(csv)
+data.pipe(csv).pipe(process.stdout);
 ```
 
 # License
