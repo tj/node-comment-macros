@@ -82,7 +82,7 @@ Macros.prototype.visit = function(str){
  */
 
 Macros.prototype.process = function(js){
-  var re = /^( *\/\/.*)/gm;
+  var re = /^(\s*\/\/.*)/gm;
   var prefix = this.prefix;
   var self = this;
 
