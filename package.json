@@ -1,9 +1,16 @@
 {
   "name": "comment-macros",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "visionmedia/node-comment-macros",
   "description": "Turn comments into macros for logging, tracing, metrics, etc",
-  "keywords": ["logging", "metrics", "macros", "tracing", "trace", "comment"],
+  "keywords": [
+    "logging",
+    "metrics",
+    "macros",
+    "tracing",
+    "trace",
+    "comment"
+  ],
   "dependencies": {},
   "devDependencies": {
     "mocha": "*",
