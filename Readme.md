@@ -8,10 +8,10 @@
 ```js
 var user = { name: 'tobi' };
 console.log("start saving user")
-console.time("start saving user")
+console.time("saving user")
 db.save(user, function(err){
   console.log("end saving user")
-  console.timeEnd("end saving user")
+  console.timeEnd("saving user")
 });
 ```
 
